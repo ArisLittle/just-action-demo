@@ -1,0 +1,17 @@
+name: GitHub Actions Demo
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "🎉 job 被 ${{ github.event_name }} event 触发."
+      - run: echo "🐧 运行在GitHub上的 ${{ runner.os }} 服务器!"
+      - run: echo "🔎 分支名 ${{ github.ref }} , 仓库名 ${{ github.repository }}."
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - run: echo "💡 ${{ github.repository }} 仓库被克隆至运行器."
+      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
+      - name: List files in the repository
+        run: |
+          ls ${{ github.workspace }}
+      - run: echo "🍏 job状态 ${{ job.status }}."
